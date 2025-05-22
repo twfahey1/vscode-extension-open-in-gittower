@@ -1,11 +1,30 @@
 {
   "name": "vscode-ext-open-in-gittower",
   "displayName": "Open in Git Tower",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "publisher": "tylerfahey",
   "description": "Opens folders in Git Tower directly from VS Code",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:twfahey1/vscode-extension-open-in-gittower.git"
+  },
   "engines": {
     "vscode": "^1.60.0"
+  },
+  "main": "./out/extension.js",
+  "activationEvents": [
+    "onCommand:extension.openInGitTower",
+    "onStartupFinished"
+  ],
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./"
+  },
+  "devDependencies": {
+    "@types/node": "^16.x",
+    "@types/vscode": "^1.60.0",
+    "typescript": "^4.x"
   },
   "contributes": {
     "commands": [
@@ -18,10 +37,25 @@
       "explorer/context": [
         {
           "command": "extension.openInGitTower",
-          "when": "resourceUri",
-          "group": "navigation"
+          "when": "explorerResourceIsFolder || explorerResourceIsRoot",
+          "group": "2_workspace"
+        }
+      ],
+      "commandPalette": [
+        {
+          "command": "extension.openInGitTower",
+          "when": "explorerResourceIsFolder || explorerResourceIsRoot"
         }
       ]
     }
-  }
+  },
+  "license": "MIT",
+  "categories": [
+    "Other"
+  ],
+  "keywords": [
+    "git",
+    "tower",
+    "gittower"
+  ]
 }
