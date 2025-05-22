@@ -1,0 +1,27 @@
+{
+  "name": "vscode-ext-open-in-gittower",
+  "displayName": "Open in Git Tower",
+  "version": "1.0.0",
+  "publisher": "tylerfahey",
+  "description": "Opens folders in Git Tower directly from VS Code",
+  "engines": {
+    "vscode": "^1.60.0"
+  },
+  "contributes": {
+    "commands": [
+      {
+        "command": "extension.openInGitTower",
+        "title": "Open in Git Tower"
+      }
+    ],
+    "menus": {
+      "explorer/context": [
+        {
+          "command": "extension.openInGitTower",
+          "when": "resourceUri",
+          "group": "navigation"
+        }
+      ]
+    }
+  }
+}
